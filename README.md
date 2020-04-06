@@ -24,4 +24,25 @@ This should do a one-time copying of anything that's new into the configured fol
 
 
 ### Automatic use (hands-free, software of the future!)
-I'll fill this out soon, the gist is that you set-up a Windows Task Schedule to run periodically  
+1. Open Task Scheduler
+2. Select the Action menu, and select "Create Basic Task..."
+3. Enter the Name and Description as desired (below are what I used), then click Next
+    Name: Sync Lockground to Desktop
+    Description: Captures "Lockground" (background pictures on the lock screen) images to be used as desktop background wallpapers
+4. Select how frequently you want the synchronization to happen then click Next. I prefer to run it nightly when I'm asleep, or first thing when it turns on the next morning, but you can choose what suits you best. This shouldn't take very long, so it shouldn't slow down startup if you choose to run on login or startup. The rest of the guide will presume Daily was chosen, if another option was selected please adjust your steps accordingly.
+5. Make the adjustments to the Trigger details, for my "Daily" guide set the Start time to a time you're not normally using the computer. I set mine to 3:00:00 AM, ticked Synchronize across time zones, and Recur every 1 days, then click Next
+6. Verify the option "Start a program" is selected, then click Next
+7. Click "Browse..." and select the syncLockgroundToDesktop.vbs file
+    7a. If logging is enabled, you can either set the LOG_FILE to include a path where the log should be written to, otherwise if you just put a filename you should also in the Task Scheduler include the "Start in (optional)" to point to where the log file should be written to.
+8. Click Next, verify the scheduled task is set up as you expect it to be, then click Finish
+    8a. Now would be a good time to both test the job just created, and also get the first batch of wallpapers. To do so, select Task Scheduler Library in the left pane. Scroll down in that window until you find the task you just created (named as you did in step 3 above). Right-click that row and select "Run". The Status will change to "Running". You can occasionally press F5 key to refresh, after the task is complete the Status will revert to Ready. There should now be at least one image saved in the location you configured to store the images.
+9. Now you're syncrhonizing the background images from the lock screen to a folder you can easily access (and that Microsoft won't periodically delete), you just need to point your wallpapers to that directory.
+    9a. Open Windows Settings - Press the Start button, then select the gear-looking icon (when you hover over it it should expand and say "Settings" next to it)
+    9b. Click Personalization
+    9c. Change the "Background" drop-down menu to be "Slideshow"
+    9d. Under "Choose albums for your slideshow" click the "Browse" button
+    9e. Navigate to where you have the images saved to, select it, and click "Choose this folder"
+
+There are other settings you can adjust, for example how frequently to change the background, whether to shuffle the order, etc. Set them to your preference, or if you don't know your preference yet leave them alone and come back later when you determine your preference.
+
+That should do it!
